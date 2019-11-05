@@ -17,19 +17,6 @@ mongoose.connect(config.db.uri, config.db.options, function (err) {
   }
 });
 
-if (process.env.NODE_ENV === 'local') {
-  log.warn('node env is set to "local" see we are debugging mongoose queries.');
-  // mongoose.set('debug', true);
-  mongoose.set('debug', function (coll: string, method: string, query: string, doc: string) {
-    log.debug('===================================================================');
-    log.debug('Query executed:');
-    log.debug('collection:', util.inspect(coll));
-    log.debug('method:', util.inspect(method));
-    log.debug('data/query:', util.inspect(query));
-    doc && log.debug('doc:', util.inspect(doc));
-  });
-}
-
 const conn = mongoose.connection;
 
 conn.on('error', function (err) {

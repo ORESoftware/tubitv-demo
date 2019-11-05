@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker run --name tubitv -d mongo
+docker run --rm -p 27017:27017 --name tubitv -d mongo

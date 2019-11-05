@@ -4,9 +4,14 @@ import * as express from 'express';
 import {ErrorRequestHandler, NextFunction, Request, RequestHandler, Response} from 'express';
 import * as watchableRouter from './routes/watchable';
 import * as userRouter from './routes/user';
+import bodyParser = require("body-parser");
 
 
 const app = express();
+
+app.use(bodyParser.json({limit: "50mb"}));
+app.use(bodyParser.urlencoded({extended: true, limit: "50mb"}));
+
 
 app.use((req: any, res, next) => {
   
