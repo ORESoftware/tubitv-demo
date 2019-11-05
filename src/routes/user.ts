@@ -26,6 +26,7 @@ router.get('/',  (req: any, res, next) => {
     .exec()
     // .populate(...populate)
     .then(rh.stdPromiseResp(res))
+    .catch(next);
   
 });
 
@@ -36,7 +37,8 @@ router.get('/by_id/:id', function (req, res, next) {
   return User.findById(id)
     .lean()
     .exec()
-    .then(rh.stdPromiseResp(res));
+    .then(rh.stdPromiseResp(res))
+    .catch(next);
   
 });
 
@@ -45,7 +47,7 @@ router.post('/', function (req, res, next) {
   
   const username = req.body.username;
   
-  return User.update({username}, {
+   User.update({username}, {
       username: username,
     }, {
       upsert: true,
@@ -53,7 +55,8 @@ router.post('/', function (req, res, next) {
     })
     .then(
       rh.stdPromiseResp(res)
-    );
+    )
+     .catch(next);
   
 });
 
@@ -65,7 +68,8 @@ router.delete('/by_id/:id', function (req, res, next) {
   return User.findByIdAndRemove(id)
     .lean()
     .exec()
-    .then(rh.stdPromiseResp(res));
+    .then(rh.stdPromiseResp(res))
+    .catch(next);
   
 });
 

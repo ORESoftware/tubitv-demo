@@ -38,7 +38,8 @@ router.get('/by_id/:id', function (req, res, next) {
   return Watchable.findById(id)
     .lean()
     .exec()
-    .then(rh.stdPromiseResp(res));
+    .then(rh.stdPromiseResp(res))
+    .catch(next);
   
 });
 
@@ -50,7 +51,8 @@ router.get('/by_username/:id', function (req, res, next) {
   return Watchable.findById(id)
     .lean()
     .exec()
-    .then(rh.stdPromiseResp(res));
+    .then(rh.stdPromiseResp(res))
+    .catch(next);
   
 });
 
@@ -69,7 +71,8 @@ router.post('/', function (req, res, next) {
   })
     .then(
     rh.stdPromiseResp(res)
-  );
+  )
+    .catch(next);
   
 });
 
@@ -80,7 +83,8 @@ router.delete('/by_id/:id', function (req, res, next) {
   return Watchable.findByIdAndRemove(id)
     .lean()
     .exec()
-    .then(rh.stdPromiseResp(res));
+    .then(rh.stdPromiseResp(res))
+    .catch(next);
   
 });
 

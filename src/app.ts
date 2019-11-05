@@ -27,8 +27,8 @@ app.use((req: any, res, next) => {
   
 });
 
-app.use('/rest/user', watchableRouter.router);
-app.use('/rest/watchable', userRouter.router);
+app.use('/rest/user', userRouter.router);
+app.use('/rest/watchable', watchableRouter.router);
 app.use('/rest/contentqueue', contentQueueRouter.router);
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
