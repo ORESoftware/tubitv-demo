@@ -45,8 +45,8 @@ HTTP POST  /rest/watchable
 ```bash
 HTTP POST  /rest/contentqueue
 {
-  "username": "string"
-  "watchableId": "string"
+  "username": string
+  "watchableId": string
 }
 
 ```
