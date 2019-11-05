@@ -12,7 +12,6 @@ HTTP POST  /rest/user
 
 ## Create content/watchable
 
-
 HTTP POST  /rest/watchable
 {
   "title": string
@@ -21,7 +20,6 @@ HTTP POST  /rest/watchable
 
 
 ## Add to content queue for user 
-
 
 HTTP POST  /rest/contentqueue
 {

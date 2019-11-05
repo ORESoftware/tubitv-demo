@@ -20,7 +20,6 @@ const s = new Schema({
 });
 
 s.index({username: 1}, {unique: true, background: false});
-s.index({email: 1}, {unique: true, background: false});
 
 export interface LeanUserMdl  {
   username: string

@@ -10,6 +10,12 @@ const s = new Schema({
     auto: true
   },
   
+  title: {
+    type: String,
+    trim: true,
+    required: true,
+  },
+  
   type: {
     type: String,
     trim: true,
@@ -19,10 +25,10 @@ const s = new Schema({
 });
 
 s.index({username: 1}, {unique: true, background: false});
-s.index({email: 1}, {unique: true, background: false});
 
 export interface LeanUserMdl  {
-  username: string
+  title: string,
+  type: string
 }
 
 export type WatchableMdl = LeanUserMdl & Document;

@@ -26,6 +26,7 @@ const s = new Schema({
 
 s.index({username: 1}, {unique: false, background: false});
 s.index({watchableId: 1}, {unique: false, background: false});
+s.index({watchableId: 1, username: 1}, {unique: true, background: false});
 
 export interface LeanUserMdl {
   username: string,
