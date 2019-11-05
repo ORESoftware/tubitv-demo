@@ -7,14 +7,24 @@
 
 HTTP POST  /rest/user
 {
-  "username": "me"
+  "username": string
 }
 
 ## Create content/watchable
 
 
-HTTP POST  /rest/user
+HTTP POST  /rest/watchable
 {
-  "id": "<id>"
+  "title": string
   "type": "tv" | "movie"
+}
+
+
+## Add to content queue for user 
+
+
+HTTP POST  /rest/contentqueue
+{
+  "username": "string"
+  "watchableId": "string"
 }

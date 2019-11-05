@@ -14,7 +14,7 @@ import * as cdtModels from '../models';
 import {EVCb} from "../shared";
 
 
-export const connectToDB =  (cb: Function) => {
+export const connectToDB =  (cb: EVCb<any>) => {
   
   async.series({
     

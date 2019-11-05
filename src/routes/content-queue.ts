@@ -13,17 +13,14 @@ import mongoose = require('mongoose');
 import async = require('async');
 
 //project
-import {User, Watchable} from '../models';
+import {ContentQueue, Watchable} from '../models';
 import * as rh from './helper';
 
-
-
-router.get('/',  (req: any, res, next) => {
+router.get('/', (req: any, res, next) => {
   
   const q = req.parsedFilterParam;
-
   
-  return User.find(q)
+  return ContentQueue.find(q)
     .lean()
     .exec()
     // .populate(...populate)
@@ -35,41 +32,39 @@ router.get('/by_id/:id', function (req, res, next) {
   
   const id = req.params.id;
   
-  return Watchable.findById(id)
+  return ContentQueue.findById(id)
     .lean()
     .exec()
     .then(rh.stdPromiseResp(res));
   
 });
-
 
 router.get('/by_username/:id', function (req, res, next) {
   
   const id = req.params.id;
   
-  return Watchable.findById(id)
+  return ContentQueue.findById(id)
     .lean()
     .exec()
     .then(rh.stdPromiseResp(res));
   
 });
 
-
 router.post('/', function (req, res, next) {
   
-  const type = req.body.type;
-  const title = req.body.title;
+  const username = req.body.username;
+  const watchableId = req.body.watchableId;
   
-  return User.update({type, title}, {
-    type,
-    title
-  }, {
-    upsert: true,
-    multi: false
-  })
+  return ContentQueue.update({username}, {
+      username,
+      watchableId
+    }, {
+      upsert: true,
+      multi: false
+    })
     .then(
-    rh.stdPromiseResp(res)
-  );
+      rh.stdPromiseResp(res)
+    );
   
 });
 
@@ -83,7 +78,5 @@ router.delete('/by_id/:id', function (req, res, next) {
     .then(rh.stdPromiseResp(res));
   
 });
-
-
 
 export {router};
