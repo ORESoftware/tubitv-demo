@@ -17,7 +17,7 @@ node .
 </details>
 
 
-To the contentqueue for a user, read from the contentqueue collection by user.
+To read the contentqueue for a user, read from the contentqueue collection by user.
 In the long run, we'd want to shard the db tables/collections by user.
 
 ## Create user
