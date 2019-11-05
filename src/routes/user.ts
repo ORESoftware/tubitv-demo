@@ -41,6 +41,22 @@ router.get('/by_id/:id', function (req, res, next) {
 });
 
 
+router.post('/', function (req, res, next) {
+  
+  const username = req.body.username;
+  
+  return User.update({username}, {
+      username: username,
+    }, {
+      upsert: true,
+      multi: false
+    })
+    .then(
+      rh.stdPromiseResp(res)
+    );
+  
+});
+
 
 router.delete('/by_id/:id', function (req, res, next) {
   

@@ -24,7 +24,8 @@ export const stdPromiseResp = function (res: Response) {
     }
     
     res.status(status).jsonp({
-      success: models
+      success: true,
+      value: models
     });
   }
   

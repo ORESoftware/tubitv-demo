@@ -43,6 +43,17 @@ router.get('/by_id/:id', function (req, res, next) {
 });
 
 
+router.get('/by_username/:id', function (req, res, next) {
+  
+  const id = req.params.id;
+  
+  return Watchable.findById(id)
+    .lean()
+    .exec()
+    .then(rh.stdPromiseResp(res));
+  
+});
+
 
 router.post('/', function (req, res, next) {
   
@@ -56,7 +67,7 @@ router.post('/', function (req, res, next) {
   })
     .then(
     rh.stdPromiseResp(res)
-  )
+  );
   
 });
 
